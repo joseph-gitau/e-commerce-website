@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="/resources/bootstrap-5.2.2-dist/css/bootstrap-grid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/resources/bootstrap-5.2.2-dist/css/bootstrap.min.css"
+    />
+
+    <title>e commerce portal</title>
+  </head>
+  <body>
+    <!-- include partials/header.html -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/Home.html">Website Brand</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Home.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/catalogue.html">Catalogue</a>
+              </li>
+              <!-- search field -->
+              <li class="nav-item">
+                <form action="/searchItem.html" method="get" class="d-flex">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    name="term"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn-custom" type="submit">
+                    Search
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <!-- log in / sign-up -->
+          <div class="auth">
+            <a href="/auth/login.html">Log in</a>
+            <a href="/auth/register.html">Sign up</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- include partials/main.html style="background-color: #fdfa66;"-->
+    <main>
+      <!-- log in -->
+      <section class="vh-100 login">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col col-xl-10">
+              <div class="card" style="border-radius: 1rem">
+                <div class="row g-0">
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img
+                      src="/resources/images/pexels-anna-shvets-3987245.jpg"
+                      alt="login form"
+                      class="img-fluid"
+                      style="border-radius: 1rem 0 0 1rem"
+                    />
+                  </div>
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body p-4 p-lg-5 text-black">
+                      <form action="" method="post" id="login-form">
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                          <span class="h1 fw-bold mb-0">Website Brand</span>
+                        </div>
+
+                        <h5
+                          class="fw-normal mb-3 pb-3"
+                          style="letter-spacing: 1px"
+                        >
+                          Sign into your account
+                        </h5>
+
+                        <div class="form-outline mb-4">
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="email"
+                            >Email address</label
+                          >
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="password"
+                            >Password</label
+                          >
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                          <button class="btn-custom" type="submit">
+                            Login
+                          </button>
+                        </div>
+
+                        <p class="mb-5 pb-lg-2" style="color: #393f81">
+                          Don't have an account?
+                          <a href="/auth/register.html" class="reg-a"
+                            >Register here</a
+                          >
+                        </p>
+                        <a href="#!" class="small text-muted">Terms of use.</a>
+                        <a href="#!" class="small text-muted">Privacy policy</a>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="footer">
+              <div class="footer__links">
+                <ul>
+                  <li>
+                    <a href="/Home.html">Website Brand</a>
+                  </li>
+                  <li>
+                    <a href="/Home.html">Home</a>
+                  </li>
+                  <li>
+                    <a href="/catalogue.html">Catalogue</a>
+                  </li>
+                  <li>
+                    <a href="/auth/login.html">Log in</a>
+                  </li>
+                  <li>
+                    <a href="/auth/signup.html">Sign up</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__social">
+                <ul>
+                  <li>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="/resources/bootstrap-5.2.2-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <!-- jquery -->
+  </body>
+</html>
