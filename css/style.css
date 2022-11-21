@@ -14,6 +14,12 @@
 }
 body{
     overflow-x: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/resources/images/jason-leung-poI7DelFiVA-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
 /* primary colors */
@@ -34,6 +40,19 @@ body{
 .btn-custom:hover{
     background: var(--base-hover);
 }
+.btn-custom2{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: #fff;
+    color: var(--base);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+.btn-custom2:hover{
+    background: var(--base);
+    color: #fff;
+}
 /* global a */
 a{
     color: var(--base);
@@ -43,14 +62,17 @@ a{
 a:hover{
     color: var(--base-hover);
 }
+
 /* space evenly navbar */
 .navbar {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     padding: 1rem 0;
-    background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    color: #ffffff;
+    background-color: rgba(231, 70, 70, 0.2);
 }
 /* center  navbar-collapse items */
 .navbar-collapse, .ms-auto {
@@ -60,7 +82,7 @@ a:hover{
 }
 /* navbar links */
 .navbar a {
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
@@ -69,6 +91,10 @@ a:hover{
 /* navbar links hover */
 .navbar a:hover {
     color: var(--base);
+}
+/* navbar li */
+.navbar li {
+    padding: 0 0.5rem;
 }
 /* auth */
 .auth {
@@ -81,7 +107,7 @@ a:hover{
 /* auth links */
 .auth a {
     margin: 0 1rem;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
@@ -91,6 +117,14 @@ a:hover{
     underline: none;
 
 }
+/* nav-item form input */
+.nav-item input {
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 0.4rem 0.8rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
 /* hero */
 .hero {
     display: flex;
@@ -98,7 +132,7 @@ a:hover{
     align-items: center;
     height: 100vh;
     /* background: url('/resources/images/pexels-anna-shvets-3987245.jpg') no-repeat center center/cover; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.712)), url('/resources/images/pexels-anna-shvets-3987245.jpg');
+    //background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.712)), url('/resources/images/pexels-anna-shvets-3987245.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -281,6 +315,23 @@ footer a {
 .danger {
     color: red;
     font-size: 0.8rem;
+}
+/* about */
+.about {
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+/* about img */
+.about img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 

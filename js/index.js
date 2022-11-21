@@ -1,3 +1,17 @@
+// include files
+$(function () {
+  $("#includedContent").load("/partials/header.html");
+  $("#includedFooter").load("/partials/footer.html");
+});
+// set icon for website
+
+var link =
+  document.querySelector("link[rel*='icon']") || document.createElement("link");
+link.type = "image/x-icon";
+link.rel = "shortcut icon";
+link.href = "/resources/icons/apple-icon.png";
+document.getElementsByTagName("head")[0].appendChild(link);
+
 // document.ready jquery
 $(document).ready(function () {
   // turn of autocomplete for all input fields
@@ -49,9 +63,9 @@ $(document).ready(function () {
       terms: "<span class='danger'>Please accept our terms</span>",
     },
     // check if the password and confirm password are the same
-      submitHandler: function (form) {
-          window.location.href = "../auth/login.html";
-      },
+    submitHandler: function (form) {
+      window.location.href = "../auth/login.html";
+    },
     /* submitHandler: function (form) {
       $(form).ajaxSubmit({
         type: "POST",
@@ -101,10 +115,10 @@ $(document).ready(function () {
       },
     },
     //if validation is successful, prevent the form from submitting
-      submitHandler: function (form) {
-          // take the user to welcome.html 
-            window.location.href = "../welcome.html";
-      },
+    submitHandler: function (form) {
+      // take the user to welcome.html
+      window.location.href = "../welcome.html";
+    },
     /* submitHandler: function (form) {
         $(form).ajaxSubmit({
           type: "POST",
@@ -131,10 +145,10 @@ $(document).ready(function () {
       }, */
   });
   //if validation is successful, prevent the form from submitting
-    if ($("#registration-form").valid()) {
-        return false;
-    }
-    if ($("#login-form").valid()) {
-        return false;
-    }
+  if ($("#registration-form").valid()) {
+    return false;
+  }
+  if ($("#login-form").valid()) {
+    return false;
+  }
 });
