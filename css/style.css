@@ -376,10 +376,15 @@ footer a {
     border: 1px solid var(--base);
 }
 .menu-item img{
-    width: 100% !important;
+    width: auto;
     height: 250px;
     object-fit: cover;
+
     border-radius: 5px;
+}
+.price{
+    margin: 1rem 0;
+    font-size: 1.2rem;
 }
 .text-white{
     color: #fff;
@@ -409,8 +414,8 @@ footer a {
 }
 /* team-slider-item-img */
 .team-slider-item-img img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
 }
