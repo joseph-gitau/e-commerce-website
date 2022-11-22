@@ -413,7 +413,34 @@ footer a {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-
+}
+/* testimonies */
+.testimonies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    background: #fff;
+    min-height: 100vh;
+}
+/* testimonies__content__item__img img */
+.testimonies__content__item__img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* testimonies__content__item */
+.testimonies__content__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* media queries */

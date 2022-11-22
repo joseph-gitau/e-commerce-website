@@ -34,59 +34,15 @@
   </head>
   <body>
     <!-- include partials/header.html -->
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/Home.html">Website Brand</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/Home.html"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/catalogue.html">Catalogue</a>
-              </li>
-              <!-- search field -->
-                        <li class="nav-item">
-                            <form action="/searchItem.html" method="get" class="d-flex">
-                                <input class="form-control me-2" type="search" name="term" placeholder="Search"
-                                    aria-label="Search" />
-                                <button class="btn-custom" type="submit">
-                                    Search
-                                </button>
-                            </form>
-                        </li>
-            </ul>
-          </div>
-          <!-- log in / sign-up -->
-          <div class="auth">
-            <a href="/auth/login.html">Log in</a>
-            <a href="/auth/register.html">Sign up</a>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div id="includedContent"></div>
 
-    <!-- include partials/main.html -->
+    <!-- include partials/main.htmlstyle="
+          background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+        " -->
     <main>
       <section
         class="vh-100 bg-image"
-        style="
-          background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
-        "
+        
       >
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
           <div class="container h-100">
