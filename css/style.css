@@ -18,7 +18,7 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
 
 }
 
@@ -55,14 +55,19 @@ body{
 }
 /* global a */
 a{
-    color: var(--base);
-    text-decoration: none;
+    /* color: var(--base) !important; */
+    text-decoration: none !important;
     transition: all 0.3s ease-in-out;
 }
 a:hover{
     color: var(--base-hover);
 }
-
+.content-h{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/resources/images/amirali-mirhashemian-sc5sTPMrVfk-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
 /* space evenly navbar */
 .navbar {
     display: flex;
@@ -307,8 +312,6 @@ footer a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-
 }
 
 /* danger */
@@ -333,7 +336,85 @@ footer a {
     object-fit: cover;
     border-radius: 5px;
 }
+/* menu */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    background: #fff;
+}
+.menu .container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+}
+.menu-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.menu-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.menu-item:hover{
+    border: 1px solid var(--base);
+}
+.menu-item img{
+    width: 100% !important;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.text-white{
+    color: #fff;
+}
 
+/* team-slider */
+.team-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    background: #fff;
+}
+/* team-slider item */
+.team-slider-item {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+/* team-slider-item-img */
+.team-slider-item-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
 
 /* media queries */
 @media (max-width: 768px) {
