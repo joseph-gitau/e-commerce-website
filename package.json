@@ -1,0 +1,31 @@
+{
+  "name": "e-commerce-website",
+  "version": "1.0.0",
+  "description": "Restaurant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseph-gitau/e-commerce-website.git"
+  },
+  "keywords": [
+    "restaurant"
+  ],
+  "author": "Axzyte g",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joseph-gitau/e-commerce-website/issues"
+  },
+  "homepage": "https://github.com/joseph-gitau/e-commerce-website#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
