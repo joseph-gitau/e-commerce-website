@@ -17,7 +17,7 @@ $(document).ready(function () {
   // turn of autocomplete for all input fields
   $("input").attr("autocomplete", "off");
   // validate the form
-  $("#registration-form").validate({
+  $("#registration-forms").validate({
     rules: {
       name: {
         required: true,
@@ -63,9 +63,9 @@ $(document).ready(function () {
       terms: "<span class='danger'>Please accept our terms</span>",
     },
     // check if the password and confirm password are the same
-    submitHandler: function (form) {
+    /* submitHandler: function (form) {
       window.location.href = "../auth/login.html";
-    },
+    }, */
     /* submitHandler: function (form) {
       $(form).ajaxSubmit({
         type: "POST",
@@ -115,10 +115,10 @@ $(document).ready(function () {
       },
     },
     //if validation is successful, prevent the form from submitting
-    submitHandler: function (form) {
+    /* submitHandler: function (form) {
       // take the user to welcome.html
       window.location.href = "../welcome.html";
-    },
+    }, */
     /* submitHandler: function (form) {
         $(form).ajaxSubmit({
           type: "POST",
@@ -145,7 +145,7 @@ $(document).ready(function () {
       }, */
   });
   //if validation is successful, prevent the form from submitting
-  if ($("#registration-form").valid()) {
+  if ($("#registration-forms").valid()) {
     return false;
   }
   if ($("#login-form").valid()) {
