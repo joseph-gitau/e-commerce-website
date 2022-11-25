@@ -12,6 +12,20 @@ link.rel = "shortcut icon";
 link.href = "/resources/icons/apple-icon.png";
 document.getElementsByTagName("head")[0].appendChild(link);
 
+// check if user is logged in by session, show logout button and hide login button
+if (session.loggedin) {
+  res.redirect("/Home");
+  // store users data to a cookie
+  res.cookie("username", req.session.name);
+  // console .log the cookie
+  console.log(req.cookies);
+  res.send("Welcome back, " + req.session.email + "!");
+} else {
+  res.redirect("/login");
+  res.send("Please login to view this page!");
+}
+
+
 // document.ready jquery
 $(document).ready(function () {
   // turn of autocomplete for all input fields
@@ -92,7 +106,7 @@ $(document).ready(function () {
     }, */
   });
   // validate the login form
-  $("#login-form").validate({
+  $("#login-forms").validate({
     rules: {
       email: {
         required: true,
@@ -145,10 +159,10 @@ $(document).ready(function () {
       }, */
   });
   //if validation is successful, prevent the form from submitting
-  if ($("#registration-forms").valid()) {
+ /*  if ($("#registration-forms").valid()) {
     return false;
   }
-  if ($("#login-form").valid()) {
+  if ($("#login-forms").valid()) {
     return false;
-  }
+  } */
 });

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/resources/bootstrap-5.2.2-dist/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="/resources/bootstrap-5.2.2-dist/css/bootstrap.min.css" />
+
+    <title>Moonlit Burger stop</title>
+</head>
+
+<body>
+    <div class="content-h">
+        <!-- include partials/header.html -->
+        <div id="includedContent"></div>
+
+        <!-- include partials/main.html -->
+        <main class="menu-item-details">
+            <!-- menu-item details -->
+            <% menu.forEach(function(item){ %>
+            <section class="menu-item">
+                <h1><%= item.name %></h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="menu-item-img">
+                                <img src="/resources/images/foods/<%= item.image %>" alt="<%= menu.name %>" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="menu-item-details">
+                                <h1><%= item.name %></h1>
+                                <p>
+                                    <%= item.description %>
+                                </p>
+                                <div class="menu-item-price">
+                                    <h2>Price: <%= item.price %> dhs</h2>
+                                </div>
+                                <div class="menu-item-quantity">
+                                    <h2>Quantity: 1</h2>
+                                </div>
+                                <div class="menu-item-total">
+                                    <h2>Total: $10</h2>
+                                </div>
+                                <div class="menu-item-btn">
+                                    <a href="/menu" class="btn-custom">Back to Menu</a>
+                                    <a href="/cart" class="btn-custom">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <% }); %> <!-- end of menu-item details -->
+        </main>
+    </div>
+    <!-- footer -->
+    <div id="includedFooter"></div>
+
+    <!-- js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="/resources/bootstrap-5.2.2-dist/js/bootstrap.min.js"></script>
+    <!-- jquery -->
+</body>
+
+</html>

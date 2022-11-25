@@ -1,130 +1,175 @@
-const express = require("express");
-const http = require("http");
-const bcrypt = require("bcrypt");
-const path = require("path");
-const bodyParser = require("body-parser");
-const database = require("./dbserver");
-// var database = require("../database");
-const { query } = require("express");
-var mysql = require("mysql");
-// const users = require("./data").userDB;
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
 
-const app = express();
-const server = http.createServer(app);
+var createError = require("http-errors");
+var session = require("express-session");
+var flash = require("express-flash");
+var express = require("express");
+var logger = require("morgan");
+var path = require("path");
+var bcrypt = require("bcrypt");
+var cookieParser = require("cookie-parser");
+var bodyParser = require("body-parser");
+var db = require("./database");
+var app = express();
+var path = require("path");
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.use(logger("dev"));
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "./public")));
+app.use(express.static("public"));
+/**
+ * Add routes.
+ */
+app.use(require("./routes/index"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/Home.html"));
+
+app.use(flash());
+app.get("/", function (req, res, next) {
+  res.render("index", { title: "User Form" });
 });
 // home page
 app.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/Home.html"));
 });
 //menu page
-app.get("/menu", (req, res) => {
+/* app.get("/menu", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/Menu.html"));
-});
+}); */
+// menu-item page
+/* app.get("/menu-item", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/Menu-item.html"));
+}); */
 // about page
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/About.html"));
 });
+// login page
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/auth/Login.html"));
+});
+//profile page
+app.get("/profile", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/Profile.html"));
+});
 //register page
 app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/auth/Register.html"));
-});
-// post register
-app.post("/register", (req, res) => {
-    const { username, email, password, password2 } = req.body;
-    // if none of the fields are empty
-    if (username && email && password) {
-        const query = `SELECT * FROM users WHERE email = '${email}'`;
-        database.query(query, function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            // if the email is not already in the database
-            if (result.length === 0) {
-                // hash the password
-                const hashedPassword = bcrypt.hashSync(password, 10);
-                // insert the new user into the database
-                const query = `INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${hashedPassword}')`;
-                database.query(query, function (err, result) {
-                    if (err) throw err;
-                    console.log(result);
-                    // redirect to the login page
-                    res.redirect("/login");
-
-                });
-            } else {
-                // if the email is already in the database
-                res.redirect("/register");
-            }
-        });
-    }
-});
-
-
-
-/* app.post("/register", async (req, res) => {
-  try {
-    let foundUser = users.find((data) => req.body.email === data.email);
-    if (!foundUser) {
-      let hashPassword = await bcrypt.hash(req.body.password, 10);
-
-      let newUser = {
-        id: Date.now(),
-        username: req.body.username,
-        email: req.body.email,
-        password: hashPassword,
-      };
-      users.push(newUser);
-      console.log("User list", users);
-
-      res.send(
-        "<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>"
-      );
-    } else {
-      res.send(
-        "<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>"
-      );
-    }
-  } catch {
-    res.send("Internal server error");
+  if (req.isAuthenticated()) {
+    res.redirect("/home");
+  } else {
+    res.send(req.flash("testing flash"));
+    res.sendFile(path.join(__dirname, "/public/auth/Register.html"));
   }
 });
+//welcome page requires user to be authenticated
+app.get("/welcome", (req, res) => {
+  // request.session.loggedin = true; 
+  if (req.session.loggedin) {
+    res.redirect("/Home");
+    // store users data to a cookie
+    res.cookie("username", req.session.name);
+    // console .log the cookie
+    console.log(req.cookies);
+    res.send("Welcome back, " + req.session.email + "!");
+  } else {
+    res.redirect("/login");
+    res.send("Please login to view this pagehghj!");
+    
+  }
+  res.end();
 
-app.post("/login", async (req, res) => {
-  try {
-    let foundUser = users.find((data) => req.body.email === data.email);
-    if (foundUser) {
-      let submittedPass = req.body.password;
-      let storedPass = foundUser.password;
+});
+//logout page
+app.get("/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/login");
+    }
+  });
+});
 
-      const passwordMatch = await bcrypt.compare(submittedPass, storedPass);
-      if (passwordMatch) {
-        let usrname = foundUser.username;
-        res.send(
-          `<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`
-        );
+// register user
+app.post("/register", function (req, res, next) {
+  var name = req.body.name;
+  var email = req.body.email;
+  var password_raw = req.body.password;
+  // hash password
+  var password = bcrypt.hashSync(password_raw, 10);
+
+  // check if email already exists
+  var sql0 = "SELECT * FROM users WHERE email = '" + email + "'";
+  db.query(sql0, function (err, data) {
+    if (err) throw err;
+    if (data.length > 0) {
+      req.flash("error", "Email already exists");
+
+      res.redirect("/register");
+    } else {
+      // insert into database
+      var sql = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
+      db.query(sql, [name, email, password], function (err, data) {
+        if (err) throw err;
+        req.flash("success", "Registration successful");
+        res.redirect("/login");
+      });
+    }
+  });
+});
+
+// login user
+// http://localhost:3000/auth
+app.post("/login", function (request, response) {
+  var email = request.body.email;
+  var password = request.body.password;
+  if (email && password) {
+    // check if email exists
+    var sql0 = "SELECT * FROM users WHERE email = '" + email + "'";
+    db.query(sql0, function (err, data) {
+      if (err) throw err;
+      if (data.length > 0) {
+        // check if password is correct
+        if (bcrypt.compareSync(password, data[0].password)) {
+          request.session.loggedin = true;
+          request.session.email = email;
+          response.redirect("/welcome");
+        } else {
+          request.flash("error", "Incorrect Password");
+          response.redirect("/login");
+        }
       } else {
-        res.send(
-          "<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>"
-        );
+        request.flash("error", "Incorrect Email");
+        response.redirect("/login");
       }
-    } else {
-      let fakePass = `$2b$$10$ifgfgfgfgfgfgfggfgfgfggggfgfgfga`;
-      await bcrypt.compare(req.body.password, fakePass);
-
-      res.send(
-        "<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align='center'><a href='./login.html'>login again<a><div>"
-      );
-    }
-  } catch {
-    res.send("Internal server error");
+    });
+  } else {
+    request.flash("error", "Please enter Email and Password");
+    response.redirect("/login");
   }
 });
- */
-server.listen(3000, function () {
-  console.log("server is listening on port: 3000");
+
+app.use(function (req, res, next) {
+  next(createError(404));
 });
+app.use(function (err, req, res, next) {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.status(err.status || 500);
+  res.render("error");
+});
+app.listen(5555, function () {
+  console.log("Node server is running on port : 5555");
+});
+module.exports = app;
