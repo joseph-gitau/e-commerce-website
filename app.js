@@ -74,6 +74,16 @@ app.get("/register", (req, res) => {
 });
 //welcome page requires user to be authenticated
 app.get("/welcome", (req, res) => {
+  if (req.session.loggedin) {
+    const user = req.session.username;
+    res.render("welcome", { user });
+  } else {
+    // res.send("Please login to view this page!");
+    res.redirect("/login");
+  }
+
+});
+/* app.get("/welcome", (req, res) => {
   // request.session.loggedin = true; 
   if (req.session.loggedin) {
     res.redirect("/Home");
@@ -89,7 +99,7 @@ app.get("/welcome", (req, res) => {
   }
   res.end();
 
-});
+}); */
 //logout page
 app.get("/logout", (req, res) => {
   req.session.destroy(function (err) {
@@ -144,6 +154,7 @@ app.post("/login", function (request, response) {
         if (bcrypt.compareSync(password, data[0].password)) {
           request.session.loggedin = true;
           request.session.email = email;
+          request.session.username = data[0].name;
           response.redirect("/welcome");
         } else {
           request.flash("error", "Incorrect Password");

@@ -293,6 +293,10 @@ footer a {
     align-items: center;
     flex-direction: column;
     width: 70vw;
+    height: 100vh;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     /* linear gradient background color */
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.712)); */
@@ -449,6 +453,15 @@ footer a {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.welcomestaff {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    background: #fff;
+    min-height: 100vh;
 }
 
 /* media queries */

@@ -27,14 +27,14 @@ router.get("/menu", (req, res) => {
 router.get("/menu-item/:item", (req, res) => {
   let item = req.params.item;
   let menu;
-  db.query("SELECT name FROM menu WHERE id = ?", [item], (err, results) => {
+  db.query("SELECT type FROM menu WHERE id = ?", [item], (err, results) => {
     if (err) {
       console.log(err);
     } else {
       // select * from menu where name = results[0].name
       db.query(
-        "SELECT * FROM menu WHERE name = ?",
-        [results[0].name],
+        "SELECT * FROM menu WHERE type = ?",
+        [results[0].type],
         (err, results) => {
           if (err) {
             console.log(err);
